@@ -1,5 +1,5 @@
-import ProductCard from '../../components/ProductCard/ProductCard';
-import { mockProducts } from '../../data/products';
+import ProductCard from '../../components/ProductCard/ProductCard.tsx';
+import { mockProducts } from '../../data/products.ts';
 
 /**
  * ProductsPage component
