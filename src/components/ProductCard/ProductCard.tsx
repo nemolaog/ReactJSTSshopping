@@ -1,22 +1,31 @@
-import { ProductCardProps } from './ProductCard.types';
-import { Link } from "react-router-dom";
+import {ProductCardProps} from './ProductCard.types';
+import {Link} from "react-router-dom";
 
 /**
  * ProductCard component
  * Responsible for displaying individual product information
  */
-function ProductCard({ product }: ProductCardProps) {
+function ProductCard({product}: ProductCardProps) {
+    /**
+     * Handles add-to-cart action.
+     * This will be connected to global cart state later.
+     */
+    function handleAddtoCart() {
+        console.log("Add to Cart", product)
+    }
+
     return (
-        <Link
-            to={`/products/${product.id}`} className="block"
-        >
-            <div className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-all">
-            {/* Product image */}
-            <img
-                src={product.image}
-                alt={product.title}
-                className="w-full h-48 object-cover"
-            />
+        <div className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-all">
+            {/* Clickable product information area */}
+            <Link
+                to={`/products/${product.id}`} className="block"
+            >
+                {/* Product image */}
+                <img
+                    src={product.image}
+                    alt={product.title}
+                    className="w-full h-48 object-cover"
+                />
 
                 <div className="p-4">
 
@@ -34,17 +43,19 @@ function ProductCard({ product }: ProductCardProps) {
                     <p className="text-sm text-gray-500 mt-1">
                         {product.category}
                     </p>
-
-                    {/* Add to cart button */}
-                    <button
-                        className="mt-4 w-full bg-blue-600 text-white py-2.5 rounded-lg hover:bg-blue-700 transition"
-                    >
-                        Add to Cart
-                    </button>
                 </div>
-
+            </Link>
+            <div className="p-4">
+                {/* Add to cart button */}
+                <button
+                    type="button"
+                    onClick={handleAddtoCart}
+                    className="mt-4 w-full bg-blue-600 text-white py-2.5 rounded-lg hover:bg-blue-700 transition"
+                >
+                    Add to Cart
+                </button>
             </div>
-        </Link>
+        </div>
     );
 }
 
