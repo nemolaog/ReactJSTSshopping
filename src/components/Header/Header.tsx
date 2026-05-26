@@ -1,0 +1,48 @@
+import { Link } from 'react-router-dom';
+import { useCartStore } from '../../store/cartStore';
+
+/**
+ * Header component
+ * Displays main navigation and current cart item count.
+ */
+
+function Header() {
+    const totalItems = useCartStore((state) => state.totalItems);
+    return(
+        <header className="bg-white border-b border-gray-200">
+            <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+                {/* App logo / home link */}
+                <Link
+                    to="/"
+                    className="text-2xl font-bold text-gray-900"
+                >
+                    Product Explorer
+                </Link>
+
+                {/* Main navigation */}
+                <nav>
+                    <Link to="/products"
+                          className="text-gray-700 hover:text-blue-600 transition"
+                    >
+                        Products
+                    </Link>
+                    <Link
+                        to="/cart"
+                        className="relative text-gray-700 hover:text-blue-600 transition"
+                    >
+                        Cart
+
+                        {/* Cart item count badge */}
+                        {totalItems > 0 && (
+                            <span className="ml-2 inline-flex items-center justify-center min-w-6 h-6 px-2 rounded-full bg-blue-600 text-white text-sm font-semibold">
+                                {totalItems}
+                            </span>
+                        )}
+                    </Link>
+                </nav>
+            </div>
+        </header>
+    )
+}
+export default Header;
+

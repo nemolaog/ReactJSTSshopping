@@ -1,17 +1,20 @@
 import {ProductCardProps} from './ProductCard.types';
 import {Link} from "react-router-dom";
+import { useCartStore } from '../../store/cartStore';
+
 
 /**
  * ProductCard component
  * Responsible for displaying individual product information
  */
 function ProductCard({product}: ProductCardProps) {
+    const addItem = useCartStore((state) => state.addItem);
     /**
-     * Handles add-to-cart action.
-     * This will be connected to global cart state later.
+     * Adds the current product to the global cart store.
+     * aaa
      */
     function handleAddtoCart() {
-        console.log("Add to Cart", product)
+        addItem(product);
     }
 
     return (
