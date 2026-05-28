@@ -24,13 +24,13 @@ function Header() {
                     <Link to="/products"
                           className="text-gray-700 hover:text-blue-600 transition"
                     >
-                        Products
+                        <button className="px-2 hover:bg-amber-300">Products</button>
                     </Link>
                     <Link
                         to="/cart"
                         className="relative text-gray-700 hover:text-blue-600 transition"
                     >
-                        Cart
+                        <button className="px-2 hover:bg-amber-300">Cart</button>
 
                         {/* Cart item count badge */}
                         {totalItems > 0 && (
